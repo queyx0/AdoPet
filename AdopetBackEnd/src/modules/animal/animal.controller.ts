@@ -1,19 +1,22 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { AnimalService } from './animal.service';
 
-@Controller('animal')
+@Controller('api/v1/animal')
 export class AnimalController {
   constructor(private readonly animalService: AnimalService) {}
+
+  @Get()
+  findAll() {
+    return this.animalService.findAll();
+  }
+
+
 
   @Post()
   create(@Body() createAnimalDto) {
     return this.animalService.create(createAnimalDto);
   }
 
-  @Get()
-  findAll() {
-    return this.animalService.findAll();
-  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
