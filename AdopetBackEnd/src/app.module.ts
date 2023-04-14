@@ -1,11 +1,11 @@
 import { PrismaService } from './database/prisma.service';
 import { Module } from '@nestjs/common';
-import { AnimalModule } from './modules/animal/animal.module';
-import { TutorModule } from './modules/tutor/tutor.module';
-import { UsuarioModule } from './modules/usuario/usuario.module';
+import { TutorModule } from './modules/Tutor/tutor.module';
+import { UsuarioModule } from './modules/Usuario/usuario.module';
+import { PetsModule } from './modules/Pets/pets.module';
 
 @Module({
-  imports: [ AnimalModule, TutorModule, UsuarioModule],
+  imports: [PetsModule, TutorModule, UsuarioModule],
   controllers: [],
   providers: [PrismaService],
 })

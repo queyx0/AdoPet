@@ -25,17 +25,29 @@ model Tutor {
   sobre      String
   Usuario    Usuario    @relation(fields: [usuarioId], references: [id])
   usuarioId  String     @unique
-  Animais    Animal[]
+  Animais    Pets[]
 }
 
-model Animal {
+model Pets {
   id         String     @id @default(uuid())
   nome       String 
   idade      String
   porte      String
   descricao  String?
-  cidade     String?
   foto       String?
-  Tutor      Tutor    @relation(fields: [tutorId], references: [id])
-  tutorId    String
+  Tutor      Tutor?    @relation(fields: [tutorId], references: [id])
+  tutorId    String?
+  Abrigo     Abrigo   @relation(fields: [abrigoId], references: [id])
+  abrigoId   String
+  adotado    Boolean  @default(false)
+}
+
+model Abrigo { 
+  id         String     @id @default(uuid())
+  nome       String 
+  cep        String
+  cidade     String
+  endereco   String
+  numero     String
+  Pets       Pets[]
 }
